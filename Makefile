@@ -20,12 +20,16 @@ love-$(VERSION)-win64.zip:
 	wget $(WINURL64)
 
 $(TARGET)-win32: love-$(VERSION)-win32.zip $(TARGET).love
+	rm -rf $@
+	rm -rf love-$(VERSION)-win32
 	unzip $<
 	mv love-$(VERSION)-win32 $@
 	cat $(TARGET).love >> $@/love.exe
 	zip $@.zip -r $@
 
 $(TARGET)-win64: love-$(VERSION)-win64.zip $(TARGET).love
+	rm -rf $@
+	rm -rf love-$(VERSION)-win64
 	unzip $<
 	mv love-$(VERSION)-win64 $@
 	cat $(TARGET).love >> $@/love.exe
