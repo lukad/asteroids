@@ -2,10 +2,12 @@ require "32log"
 require "ship"
 
 local keys = {}
+width = love.window.getWidth()
+height = love.window.getHeight()
 
 function love.load()
 	ship_img = love.graphics.newImage("assets/ship.png")
-	ship = Ship:new(ship_img)
+	ship = Ship:new(ship_img, width/2, height/2)
 end
 
 function love.draw()
