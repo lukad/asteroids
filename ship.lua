@@ -10,10 +10,26 @@ function Ship:__init(img, x, y)
 	self.x = x
 	self.y = y
 	self.img = img
+	self.w = self.img:getWidth()
+	self.h = self.img:getHeight()
+end
+
+function Ship:draw_overlapping()
+	if self.x - self.w/2 < 0 then
+		love.graphics.draw(self.img, width + self.x, self.y, math.rad(self.rotation+90), 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
+	elseif self.x + self.w/2 > width then
+		love.graphics.draw(self.img, self.x - width, self.y, math.rad(self.rotation+90), 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
+	end
+	if self.y - self.h/2 < 0 then
+		love.graphics.draw(self.img, self.x, height + self.y, math.rad(self.rotation+90), 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
+	elseif self.y + self.h/2 > height then
+		love.graphics.draw(self.img, self.x, self.y - height, math.rad(self.rotation+90), 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
+	end
 end
 
 function Ship:draw()
 	love.graphics.draw(self.img, self.x, self.y, math.rad(self.rotation+90), 1, 1, self.img:getWidth()/2, self.img:getHeight()/2)
+	ship:draw_overlapping()
 end
 
 function Ship:update(dt, keys)
