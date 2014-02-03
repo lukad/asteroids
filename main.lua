@@ -1,7 +1,8 @@
 require "32log"
 require "ship"
 
-local keys = {}
+keys = {}
+lasers = {}
 width = love.window.getWidth()
 height = love.window.getHeight()
 
@@ -23,8 +24,4 @@ function love.keypressed(key, isrepeat)
 	if key == "rctrl" then
 		debug.debug()
 	end
-end
-
-function love.keyreleased(key)
-	keys[key] = false
 end
