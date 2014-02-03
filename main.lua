@@ -8,8 +8,13 @@ lasers = {}
 function love.load()
 	-- Load images
 	img = {
-		["ship"] = love.graphics.newImage("assets/ship.png"),
-		["laser"] = love.graphics.newImage("assets/laser.png")
+		["ship"] = love.graphics.newImage("assets/img/ship.png"),
+		["laser"] = love.graphics.newImage("assets/img/laser.png")
+	}
+
+	-- Load sounds
+	sounds = {
+		["laser"] = love.audio.newSource("assets/sound/laser.wav")
 	}
 
 	-- Get height and width
@@ -64,9 +69,11 @@ function fire_laser()
 	if now - last_laser <= 1.0/LASERS_PER_SECOND then
 		return
 	end
+	last_laser = now
 	local x = ship.x + math.cos(math.rad(ship.rotation))
 	local y = ship.y + math.sin(math.rad(ship.rotation))
 	local speed = math.sqrt(ship.vx*ship.vx + ship.vy*ship.vy)/love.timer.getDelta()
 	table.insert(lasers, Laser:new(img["laser"], x, y, ship.rotation, speed))
-	last_laser = now
+
+	love.audio.play(sounds["laser"])
 end
