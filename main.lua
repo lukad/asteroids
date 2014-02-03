@@ -57,5 +57,6 @@ end
 function fire_laser()
 	local x = ship.x + math.cos(math.rad(ship.rotation))
 	local y = ship.y + math.sin(math.rad(ship.rotation))
-	table.insert(lasers, Laser:new(img["laser"], x, y, ship.rotation))
+	local speed = math.sqrt(ship.vx*ship.vx + ship.vy*ship.vy)/love.timer.getDelta()
+	table.insert(lasers, Laser:new(img["laser"], x, y, ship.rotation, speed))
 end

@@ -1,14 +1,15 @@
 require "drawable"
 
 class "Laser" {
-	speed = 450;
+	base_speed = 450;
 	lifetime = 1.5;
 }
 
-function Laser:__init(img, x, y, rotation)
+function Laser:__init(img, x, y, rotation, speed)
 	self.img = img
 	self.x = x
 	self.y = y
+	self.speed = self.base_speed + speed
 	self.rotation = rotation
 	self.created_at = love.timer.getTime()
 	self.drawable = Drawable:new(self.img)
