@@ -27,3 +27,12 @@ end
 function Laser:draw()
 	self.drawable:draw(self.x, self.y, self.rotation)
 end
+
+function Laser:collides_with(other)
+	local w = self.drawable.w
+	local h = self.drawable.h
+	local other_w = other.drawable.w
+	local other_h = other.drawable.h
+	return self.x-w/2 < other.x+other_w/2 and self.x+w/2 > other.x-other_w/2 and
+	       self.y-h/2 < other.y+other_h/2 and self.y+w/2 > other.y-other_h/2
+end
