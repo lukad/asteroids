@@ -85,7 +85,7 @@ function love.update(dt)
 	end
 
 	-- Fire lasers
-	if keys[" "] then
+	if keys["spacebar"] then
 		fire_laser()
 	end
 end
