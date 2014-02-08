@@ -36,7 +36,7 @@ function Ship:update(dt, keys)
 	self.vx = self.vx * math.pow(self.friction, dt)
 	self.vy = self.vy * math.pow(self.friction, dt)
 
-	-- Calculate position by adding delta velcity
+	-- Calculate position by adding delta velocity
 	self.x = self.x + self.vx
 	self.y = self.y + self.vy
 
