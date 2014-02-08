@@ -23,11 +23,11 @@ end
 
 function Ship:update(dt, keys)
 	-- Calculate rotation
-	if keys["left"] then self.rotation = self.rotation - self.rotation_speed * dt end
-	if keys["right"] then self.rotation = self.rotation + self.rotation_speed * dt end
+	if keys["left"] or keys["a"] then self.rotation = self.rotation - self.rotation_speed * dt end
+	if keys["right"] or keys["d"] then self.rotation = self.rotation + self.rotation_speed * dt end
 
 	-- Apply forward thrust
-	if keys["up"] then
+	if keys["up"] or keys["w"] then
 		self.vx = self.vx + math.cos(math.rad(self.rotation)) * self.accel * dt
 		self.vy = self.vy + math.sin(math.rad(self.rotation)) * self.accel * dt
 	end
