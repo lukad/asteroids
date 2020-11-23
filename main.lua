@@ -18,16 +18,16 @@ function love.load()
 
 	-- Load sounds
 	sounds = {
-		["laser"] = love.audio.newSource("assets/sound/laser.wav"),
-		["explosion"] = love.audio.newSource("assets/sound/explosion.wav")
+		["laser"] = love.audio.newSource("assets/sound/laser.wav", "static"),
+		["explosion"] = love.audio.newSource("assets/sound/explosion.wav", "static")
 	}
 
 	-- Seed random
 	math.randomseed(os.time())
 
 	-- Get height and width
-	height = love.window.getHeight()
-	width = love.window.getWidth()
+	height = love.graphics.getHeight()
+	width = love.graphics.getWidth()
 
 	-- Create player ship
 	ship = Ship:new(img["ship"], width/2, height/2)
@@ -85,7 +85,7 @@ function love.update(dt)
 	end
 
 	-- Fire lasers
-	if keys[" "] then
+	if keys["space"] then
 		fire_laser()
 	end
 end
